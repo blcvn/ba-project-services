@@ -21,38 +21,10 @@ type RedisConfig struct {
 	DB       int    `json:"db"`
 }
 
-type PostgresConfig struct {
-	Host     string
-	Port     int
-	User     string
-	Password string
-	DBName   string
-}
-
-type VaultConfig struct {
-	Address string
-	Token   string
-}
-
-type ServerConfig struct {
-	HTTP struct {
-		Addr    string
-		Timeout time.Duration
-	}
-	GRPC struct {
-		Addr    string
-		Timeout time.Duration
-	}
-}
-
 type Config struct {
 	// Loaded from config.json (secrets)
 	Database DatabaseConfig `json:"database"`
 	Redis    RedisConfig    `json:"redis"`
-
-	// Loaded from config.yaml or env (optional legacy support or specific service settings)
-	// We keep these if the service code relies on them, but we prioritize DatabaseConfig for DB connection.
-	// We map older config.Postgres to our new structure if needed, or just use DatabaseConfig.
 
 	KongHeaders struct {
 		UserIDHeader   string `mapstructure:"user_id_header"`
@@ -76,7 +48,7 @@ const (
 func LoadConfig() (*Config, error) {
 	cfg := &Config{}
 
-	// 1. Load config.yaml for non-sensitive data (Kong headers, mTLS paths)
+	// 1. Load config.yaml
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./config")
@@ -87,11 +59,9 @@ func LoadConfig() (*Config, error) {
 		if err := viper.Unmarshal(cfg); err != nil {
 			log.Errorf("failed to unmarshal yaml config: %v", err)
 		}
-	} else {
-		log.Infof("config.yaml not found/loaded: %v", err)
 	}
 
-	// 2. Load secrets from Vault Agent file (config.json)
+	// 2. Load secrets from Vault Agent file
 	cfgPath := DEFAULT_SECRET_PATH
 	if value := os.Getenv(SECRET_FILE_KEY); value != "" {
 		cfgPath = value
@@ -100,7 +70,6 @@ func LoadConfig() (*Config, error) {
 	var configFile *os.File
 	var err error
 
-	// Retry loop for sidecar
 	for i := 0; i < LoadSecretRetries; i++ {
 		if configFile, err = os.Open(cfgPath); err != nil {
 			log.Infof("waiting for config file %s... (%d/%d)", cfgPath, i+1, LoadSecretRetries)
@@ -120,7 +89,7 @@ func LoadConfig() (*Config, error) {
 		log.Warnf("failed to open secret config %s: %v. Using env vars or defaults.", cfgPath, err)
 	}
 
-	// 3. Fallback/Env Override for DB (if needed)
+	// 3. Fallback/Env Override
 	if cfg.Database.URL == "" {
 		cfg.Database.URL = os.Getenv("DATABASE_URL")
 	}

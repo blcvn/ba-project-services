@@ -62,12 +62,11 @@ func setTracerProvider(ctx context.Context, endpoint string) (func(context.Conte
 
 // setupDatabase initializes database connection
 func setupDatabase(appLog *log.Helper, cfg *configs.Config) *gorm.DB {
-	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		cfg.Postgres.Host,
-		cfg.Postgres.Port,
-		cfg.Postgres.User,
-		cfg.Postgres.Password,
-		cfg.Postgres.DBName)
+	// Use URL from Vault secret config
+	dsn := cfg.Database.URL
+	if dsn == "" {
+		appLog.Fatal("database URL is empty")
+	}
 
 	db, err := gorm.Open(pgdriver.Open(dsn), &gorm.Config{})
 	if err != nil {
@@ -165,14 +164,14 @@ func setupHTTPServer(
 		appLog.Fatalf("failed to register feature gateway: %v", err)
 	}
 
-	// Mount grpc-gateway on HTTP server
-	httpSrv.HandlePrefix("/", gwmux)
-
 	// Add Prometheus metrics endpoint
 	httpSrv.Route("/").GET(metricsPath, func(ctx http.Context) error {
 		promhttp.Handler().ServeHTTP(ctx.Response(), ctx.Request())
 		return nil
 	})
+
+	// Mount grpc-gateway on HTTP server
+	httpSrv.HandlePrefix("/", gwmux)
 
 	return httpSrv
 }
