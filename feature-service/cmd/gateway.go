@@ -73,7 +73,12 @@ func setupDatabase(appLog *log.Helper, cfg *configs.Config) *gorm.DB {
 		appLog.Fatalf("failed to connect to database: %v", err)
 	}
 
-	appLog.Info("database connection established")
+	// Auto migrate the schema
+	if err := db.AutoMigrate(&postgres.Feature{}); err != nil {
+		appLog.Fatalf("failed to migrate database: %v", err)
+	}
+
+	appLog.Info("database connection established and migrated")
 	return db
 }
 
