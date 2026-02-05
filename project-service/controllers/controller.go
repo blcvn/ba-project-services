@@ -37,7 +37,7 @@ func (c *ProjectController) CreateProject(ctx context.Context, req *pb.CreatePro
 			tenantID = tr.RequestHeader().Get("Grpc-Metadata-tenant_id")
 		}
 	}
-	fmt.Printf("CreateProject: UserID=%s TenantID=%s\n", userID, tenantID)
+	fmt.Printf("DEBUG: CreateProject request: Name=%s UserID=%s TenantID=%s\n", req.Payload.Name, userID, tenantID)
 
 	if userID == "" || tenantID == "" {
 		return nil, status.Error(codes.Unauthenticated, fmt.Sprintf("Missing Identity headers. UserID=%s TenantID=%s", userID, tenantID))
@@ -59,9 +59,11 @@ func (c *ProjectController) CreateProject(ctx context.Context, req *pb.CreatePro
 
 	result, err := c.uc.Create(ctx, p)
 	if err != nil {
+		fmt.Printf("DEBUG: CreateProject FAILED: %v\n", err)
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
+	fmt.Printf("DEBUG: CreateProject SUCCESS: ID=%s\n", result.ID)
 	return &pb.ProjectReply{
 		Result:  &pb.Result{Code: pb.ResultCode_SUCCESS, Message: "Project created successfully"},
 		Payload: convertToProto(result),
