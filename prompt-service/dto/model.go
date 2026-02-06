@@ -9,7 +9,7 @@ import (
 
 // PromptTemplate represents the database model for prompt templates
 type PromptTemplate struct {
-	ID          uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()"`
+	ID          uuid.UUID `gorm:"type:uuid;primary_key;default:uuid_generate_v4()"`
 	Name        string    `gorm:"type:varchar(255);uniqueIndex;not null"`
 	Description string    `gorm:"type:text"`
 	Version     string    `gorm:"type:varchar(50);default:'v1'"`
@@ -35,7 +35,7 @@ func (t *PromptTemplate) BeforeUpdate(tx *gorm.DB) error {
 
 // Experiment represents the database model for experiments
 type Experiment struct {
-	ID               uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()"`
+	ID               uuid.UUID `gorm:"type:uuid;primary_key;default:uuid_generate_v4()"`
 	Name             string    `gorm:"type:varchar(255);not null"`
 	PromptTemplateID uuid.UUID `gorm:"type:uuid;not null;index"`
 	ModelID          uuid.UUID `gorm:"type:uuid;not null;index"`

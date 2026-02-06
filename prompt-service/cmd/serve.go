@@ -15,6 +15,7 @@ import (
 	"github.com/blcvn/backend/services/prompt-service/usecases"
 	pb "github.com/blcvn/kratos-proto/go/prompt"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -33,10 +34,21 @@ func runServe(cmd *cobra.Command, args []string) {
 	grpcPort := getEnv("GRPC_PORT", "9086")
 	httpPort := getEnv("HTTP_PORT", "8086")
 
-	db, err := gorm.Open(pgDriver.Open(dbURL), &gorm.Config{})
+	db, err := gorm.Open(pgDriver.New(pgDriver.Config{
+		DSN:                  dbURL,
+		PreferSimpleProtocol: true,
+	}), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Failed to connect to db: %v", err)
 	}
+
+	// Auto-migrate models
+	log.Println("Database migrations: Manual intervention required. AutoMigrate is disabled due to driver issues.")
+	/*
+		if err := db.AutoMigrate(&dto.PromptTemplate{}, &dto.Experiment{}); err != nil {
+			log.Fatalf("Failed to run migrations: %v", err)
+		}
+	*/
 
 	repo := postgres.NewPromptRepository(db)
 	usecase := usecases.NewPromptUsecase(repo)
@@ -66,9 +78,13 @@ func runServe(cmd *cobra.Command, args []string) {
 		log.Fatalf("Failed to register gateway: %v", err)
 	}
 
+	httpMux := http.NewServeMux()
+	httpMux.Handle("/metrics", promhttp.Handler())
+	httpMux.Handle("/", mux)
+
 	httpServer := &http.Server{
 		Addr:    fmt.Sprintf(":%s", httpPort),
-		Handler: mux,
+		Handler: httpMux,
 	}
 
 	go func() {

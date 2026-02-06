@@ -40,7 +40,10 @@ func (r *FeatureRepository) List(ctx context.Context, projectID string, parentID
 	var fs []*Feature
 	query := r.db.WithContext(ctx).Where("project_id = ?", projectID)
 	if parentID != nil {
-		query = query.Where("parent_id = ?", *parentID)
+		if *parentID != "all" {
+			query = query.Where("parent_id = ?", *parentID)
+		}
+		// If *parentID == "all", we don't add parent_id filter, returning all features
 	} else {
 		query = query.Where("parent_id IS NULL")
 	}
