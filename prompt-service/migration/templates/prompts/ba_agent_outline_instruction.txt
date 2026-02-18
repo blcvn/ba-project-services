@@ -1,0 +1,85 @@
+# URD - {{.ModuleName}}
+
+> **Module:** {{.ModuleName}}
+> **Version:** 1.0
+> **Created Date:** {{.CurrentDate}}
+
+# 1 US → Use Case Mapping
+
+| Use Case ID | Use Case Name | Related User Stories | Priority | Notes |
+|--------|--------|--------|--------|--------|
+<!-- Iterate User Stories and map to Use Cases here -->
+
+# 2 Actor Definition
+
+## 2.1 Human Actors
+
+| Actor ID | Name | Description | Persona/Role |
+|--------|--------|--------|--------|
+<!-- List Human Actors here -->
+
+## 2.2 System Actors
+
+| Actor ID | Name | Description | Type |
+|--------|--------|--------|--------|
+<!-- List System Actors here -->
+
+# 3 System Boundary
+
+## 3.1 Diagram
+<!-- INSTRUCTION: Generate a Mermaid graph TD diagram representing the system boundary.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+     3. Define clear components and relationships.
+     4. DO NOT generate section "3.2 Mô tả System Boundary" or any other text. Follow immediately with the table below.
+-->
+
+| System/Module | Inside/Outside | Responsibility | Owner |
+|--------|--------|--------|--------|
+<!-- List System Components here -->
+
+# 4 Use Case Summary Table
+
+| UC ID | Name | Actor | Trigger | Preconditions | Postconditions | Priority |
+|--------|--------|--------|--------|--------|--------|--------|
+<!-- List Use Cases here -->
+
+# 5 Main Flow Sketch (High-Level)
+
+<!-- Iterate through ALL identified Use Cases -->
+## 5.x UC-[ID]: [Use Case Name]
+
+### 5.x.1 Flow Sketch:
+<!-- INSTRUCTION: Generate a Mermaid sequenceDiagram for this Use Case flow.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+     3. Ensure correct participants and meaningful interaction flow.
+-->
+
+# 6 Integration Touchpoints
+
+| Use Case | Step | System | Purpose | Mode | Error Handling |
+|--------|--------|--------|--------|--------|--------|
+<!-- List Integrations here -->
+
+# 7 Data Entities Overview
+
+## 7.1 Diagram:**
+<!-- INSTRUCTION: Generate a Mermaid erDiagram for the data entities.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+     3. Define entities and their relationships clearly.
+-->
+
+| Entity | Description | States | Relationships |
+|--------|--------|--------|--------|
+<!-- List Entities here -->
+
+# 8 Technical Notes & Concerns
+
+| ID | Concern | Affected UC | Mitigation | Owner |
+|--------|--------|--------|--------|--------|
+<!-- List Technical Concerns here -->

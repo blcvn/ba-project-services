@@ -1,0 +1,146 @@
+# URD - {{.ModuleName}}
+
+> **Module:** {{.ModuleName}}
+> **Version:** 1.0
+> **Created Date:** {{.CurrentDate}}
+
+# 1 US → Use Case Mapping
+
+| Use Case ID | Use Case Name | Related User Stories | Priority | Notes |
+|--------|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+# 2 Actor Definition
+
+## 2.1 Human Actors
+
+| Actor ID | Name | Description | Persona/Role |
+|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+## 2.2 System Actors
+
+| Actor ID | Name | Description | Type |
+|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+# 3 System Boundary
+
+## 3.1 Diagram
+<!-- INSTRUCTION: Generate a Mermaid graph TD diagram representing the system boundary.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+     3. Define clear components and relationships.
+     4. DO NOT generate section "3.2 Mô tả System Boundary" or any other text. Follow immediately with the table below.
+-->
+
+| System/Module | Inside/Outside | Responsibility | Owner |
+|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+# 4 Use Case Summary Table
+
+| UC ID | Name | Actor | Trigger | Preconditions | Postconditions | Priority |
+|--------|--------|--------|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+# 5 Main Flow Sketch (High-Level)
+
+<!-- Iterate through ALL identified Use Cases -->
+## 5.x UC-[ID]: [Use Case Name]
+
+### 5.x.1 Flow Sketch:
+<!-- INSTRUCTION: Generate a Mermaid sequenceDiagram for this Use Case flow.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+     3. Ensure correct participants and meaningful interaction flow.
+-->
+
+### 5.x.2 Use Case Overview
+
+| Field | Value |
+|------|--------|
+| Use Case ID | |
+| Use Case Name | |
+| Primary Actor | |
+| Secondary Actors | |
+| Preconditions | |
+| Postconditions | |
+| Trigger | |
+| Related User Stories | |
+| Priority | |
+
+### 5.x.3 Main Flow
+
+| Step | Actor | Action | System Response | Business Rule | Notes |
+|------|--------|--------|--------|--------|--------|
+| 1 | | | | | |
+| 2 | | | | | |
+
+### 5.x.4 Alternative Flows
+
+| ID | Step | Condition | Flow | Return Step |
+|--------|--------|--------|--------|--------|
+| | | | | |
+
+### 5.x.5 Exception / Error Flows
+
+| ID | Step | Condition | System Behavior | User Message | Severity |
+|--------|--------|--------|--------|--------|--------|
+| | | | | |
+
+### 5.x.6 Sequence Diagram
+
+**Diagram:**
+<!-- INSTRUCTION: Generate a detailed Mermaid sequenceDiagram.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+-->
+
+### 5.x.7 API Specification
+
+**Endpoint:**
+<!-- INSTRUCTION: Define the API endpoint method and URL -->
+| Field | Value |
+|--------|--------|
+| Method | |
+| URL | |
+
+**Request Body**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| | | | |
+
+**Response Body {{HttpStatus Code}}**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| | | | |
+
+# 6 Integration Touchpoints
+
+| Use Case | Step | System | Purpose | Mode | Error Handling |
+|--------|--------|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+# 7 Data Entities Overview
+
+## 7.1 Diagram:**
+<!-- INSTRUCTION: Generate a Mermaid erDiagram for the data entities.
+     CRITICAL:
+     1. Use strictly ```mermaid code block.
+     2. Do NOT use ASCII art.
+     3. Define entities and their relationships clearly.
+-->
+
+| Entity | Description | States | Relationships |
+|--------|--------|--------|--------|
+<!-- Complete table with data -->
+
+# 8 Technical Notes & Concerns
+
+| ID | Concern | Affected UC | Mitigation | Owner |
+|--------|--------|--------|--------|--------|
+<!-- Complete table with data -->

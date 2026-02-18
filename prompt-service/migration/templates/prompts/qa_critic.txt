@@ -1,0 +1,24 @@
+Review the generated Functional Requirements (FRs) against the original User Stories.
+Identify any missing requirements or logic gaps.
+Score the quality (0-100).
+Important: Provide the analysis, issues, and suggestions in **Vietnamese** (Tiếng Việt).
+
+Input:
+User Stories:
+{{USER_STORIES}}
+
+Functional Requirements:
+{{FRS}}
+
+Output JSON:
+{
+  "score": 85,
+  "issues": [
+    "FRs for US-002 do not cover error handling for database connection.",
+    "No requirement found for 'Password Reset' implied in Login story."
+  ],
+  "suggestions": [
+     "Add FR for retry logic."
+  ]
+}
+Return ONLY valid JSON.

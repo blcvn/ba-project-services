@@ -1,0 +1,16 @@
+Analyze the following text for vague, ambiguous, or unverifiable terms (e.g., "fast", "user-friendly", "robust", "high performance", "easy").
+Suggest specific metrics or clarifications for each ambiguity found.
+Important: Provide 'suggestion' and explanations in **Vietnamese (Tiếng Việt)**.
+
+Input Text:
+{{INPUT_TEXT}}
+
+Output JSON:
+[
+  {
+    "term": "user-friendly",
+    "context": "The interface must be user-friendly",
+    "suggestion": "Specify max clicks to perform core actions or referencing a style guide."
+  }
+]
+Return ONLY valid JSON. Return empty list [] if no ambiguity found.

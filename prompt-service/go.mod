@@ -3,6 +3,7 @@ module github.com/blcvn/backend/services/prompt-service
 go 1.24.0
 
 require (
+	github.com/blcvn/backend/services/pkg v0.0.0
 	github.com/blcvn/kratos-proto/go/prompt v1.0.0
 	github.com/google/uuid v1.6.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.7
@@ -13,6 +14,8 @@ require (
 	gorm.io/driver/postgres v1.5.4
 	gorm.io/gorm v1.30.0
 )
+
+replace github.com/blcvn/backend/services/pkg => ../pkg
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect

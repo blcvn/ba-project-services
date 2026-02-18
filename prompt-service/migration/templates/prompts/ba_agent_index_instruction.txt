@@ -1,0 +1,49 @@
+# URD - {{.ModuleName}}
+
+> **Module:** {{.ModuleName}}
+> **Version:** 1.0
+> **Created Date:** {{.CurrentDate}}
+
+# 1 US → Use Case Mapping
+<!-- Static Title Only -->
+
+# 2 Actor Definition
+<!-- Static Title Only -->
+
+## 2.1 Human Actors
+<!-- Static Title Only -->
+
+## 2.2 System Actors
+<!-- Static Title Only -->
+
+# 3 System Boundary
+<!-- Static Title Only -->
+
+## 3.1 Diagram
+<!-- Static Title Only -->
+
+# 4 Use Case Summary Table
+<!-- Static Title Only -->
+
+# 5 Main Flow Sketch (High-Level)
+<!-- Static Title Only -->
+
+<!-- INSTRUCTIONS:
+Iterate through ALL identified Use Cases in the context.
+For each Use Case, generate a header 5.x.
+Example:
+## 5.1 UC-001: Login
+### 5.1.1 Flow Sketch:
+-->
+
+# 6 Integration Touchpoints
+<!-- Static Title Only -->
+
+# 7 Data Entities Overview
+<!-- Static Title Only -->
+
+## 7.1 Diagram:**
+<!-- Static Title Only -->
+
+# 8 Technical Notes & Concerns
+<!-- Static Title Only -->

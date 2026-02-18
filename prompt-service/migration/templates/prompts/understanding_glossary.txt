@@ -1,0 +1,11 @@
+Identify domain-specific terms and acronyms from the text. Provide short, clear definitions in **Vietnamese (Tiếng Việt)**.
+
+Input Text:
+{{INPUT_TEXT}}
+
+Output JSON:
+{
+  "TERM": "Definition...",
+  "ACRONYM": "Full expansion and definition"
+}
+Return ONLY valid JSON.

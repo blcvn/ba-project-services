@@ -1,0 +1,13 @@
+Identify key Actors, External Systems, and Data Objects from the provided text.
+Note: If entities have descriptive names, keep them relevant, but ensure any added context is in **Vietnamese (Tiếng Việt)**.
+
+Input Text:
+{{INPUT_TEXT}}
+
+Output JSON: 
+{
+  "Actors": ["User", "Admin", "..."],
+  "Systems": ["Payment Gateway", "ERP", "..."],
+  "Data": ["Order", "Invoice", "UserProfile", "..."]
+}
+Return ONLY valid JSON.
