@@ -23,7 +23,7 @@ import (
 	"github.com/blcvn/backend/services/feature-service/helper"
 	postgres "github.com/blcvn/backend/services/feature-service/repository/postgres"
 	"github.com/blcvn/backend/services/feature-service/usecases"
-	"github.com/blcvn/backend/services/pkg/mtls"
+	"github.com/blcvn/ba-shared-libs/pkg/mtls"
 	pb "github.com/blcvn/kratos-proto/go/feature"
 
 	"go.opentelemetry.io/otel"

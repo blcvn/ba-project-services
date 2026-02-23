@@ -2,10 +2,8 @@ module github.com/blcvn/backend/services/feature-service
 
 go 1.24.0
 
-replace github.com/blcvn/backend/services/pkg => ../pkg
-
 require (
-	github.com/blcvn/backend/services/pkg v0.0.0-00010101000000-000000000000
+	github.com/blcvn/ba-shared-libs/pkg v0.0.0-00010101000000-000000000000
 	github.com/blcvn/kratos-proto/go/feature v1.0.0
 	github.com/go-kratos/kratos/v2 v2.9.2
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.7
@@ -69,3 +67,7 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260128011058-8636f8732409 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/blcvn/ba-shared-libs/pkg => ../../ba-shared-libs/pkg
+
+replace github.com/blcvn/ba-shared-libs/proto => ../../ba-shared-libs/proto
